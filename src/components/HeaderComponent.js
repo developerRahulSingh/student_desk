@@ -1,8 +1,6 @@
 import React from "react";
 import "./HeaderComponentStyle.css";
-import { Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import BookListingPage from "../pages/BookListingPage";
 
 function HeaderComponent() {
   return (

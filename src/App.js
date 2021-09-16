@@ -8,11 +8,13 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BookListingPage from "./pages/BookListingPage";
 import BookDetailPage from "./pages/BookDetailPage";
+import HeaderComponentWithMediaQuery from "./components/HeaderComponentWithMediaQuery";
 
 function App() {
   return (
     <div className="App">
       <HeaderComponent />
+      {/* <HeaderComponentWithMediaQuery/> */}
         <Switch>
           <Route path="/" exact>
             <HomePage />
