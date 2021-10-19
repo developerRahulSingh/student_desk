@@ -1,7 +1,11 @@
+import { connect, useDispatch } from "react-redux";
 import React from "react";
+import { useParams } from "react-router-dom";
 import "./HomePageStyle.css";
+import { FetchSearchBooksList } from "../reduxStore/Action/action";
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
-function HomePage() {
+function HomePage({ bookListData }) {
   const [newArrivalData, setNewArrivalData] = React.useState([
     {
       title: "Javascriptbible",
@@ -44,7 +48,13 @@ function HomePage() {
       amount: "For Free",
     },
   ]);
-
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const dispatch = useDispatch();
+  const { searchBookList } = useParams();
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    dispatch(FetchSearchBooksList(searchTerm));
+  };
   return (
     <div style={{ textAlign: "center" }}>
       <div className="bg-container">
@@ -85,26 +95,37 @@ function HomePage() {
         <div className="font-size-24 text-white py-3">- OR -</div>
 
         <div className="justify-content-md-center pt-2">
-          <div class="input-group " style={{width:"40%", margin:"10px auto",}} >
+          <div
+            className="input-group "
+            style={{ width: "40%", margin: "10px auto" }}
+          >
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Recipient's username"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
+              value={searchTerm}
+              onChange={handleChange}
             />
-            <div class="input-group-append">
-            <button
+            {bookListData.data !== undefined
+              ? bookListData.data.map((item) => <p>{item.name}</p>)
+              : ""}
+            <div className="input-group-append">
+              <button
                 className="btn btn-secondary"
                 style={{ background: "#76ba5c" }}
                 type="button"
+                onClick={() => dispatch(FetchSearchBooksList(searchTerm))}
               >
                 <i className="fa fa-search"></i>
               </button>
             </div>
           </div>
-        
-          <div className="pb-5 searchBar-links-box-style" style={{width:"40%", margin:"10px auto",}}>
+          <div
+            className="pb-5 searchBar-links-box-style"
+            style={{ width: "40%", margin: "10px auto" }}
+          >
             <div className="row py-2">
               <div className="col">
                 <a href="#" className="mx-1 link-style">
@@ -290,4 +311,19 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+function mapStateToProps(state) {
+  console.log("searchBookList ==>> ", state.BookDetailReducer.searchBookList);
+  console.log("searchBookList reducer ==>> ", state.BookDetailReducer);
+  console.log("searchBookList state ==>> ", state);
+  return {
+    bookListData: state.BookDetailReducer.searchBookList,
+  };
+}
+
+// function mapDispatchToProps(dispatch) {
+//   return {};
+// }
+
+export default connect(mapStateToProps, { FetchSearchBooksList })(HomePage);
+
+// export default HomePage;

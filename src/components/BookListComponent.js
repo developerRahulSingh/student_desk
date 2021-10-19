@@ -10,9 +10,12 @@ export default function BookListComponent({
   postedByName,
   price,
   postedOn,
+  bookId,
 }) {
   return (
-    <div className="row col-xs-12 col-md-12 col-lg-6 p-4 BookListComponent">
+    <div
+      className="row col-xs-12 col-md-12 col-lg-6 p-4 BookListComponent"
+    >
       <div className="col-xs-3 col-md-3 col-lg-3">
         <img
           alt=""
@@ -27,7 +30,7 @@ export default function BookListComponent({
       <div className="col-xs-12 col-md-12 col-lg-6 text-align-left">
         <a href="#" className="p-1 link-text-color link-text-style">
           <Link
-            to="/booksdetailpage"
+            to={`/booksdetailpage/${bookId}`}
             className="book-title-style link-text-color"
           >
             {bookTitle}

@@ -1,20 +1,41 @@
-import React from "react";
+import { connect, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
 import BookListComponent from "../components/BookListComponent";
+import { FetchBooksList } from "../reduxStore/Action/action";
 
-function BookListingPage() {
+function BookListingPage({ bookListData }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(FetchBooksList());
+  }, []);
   return (
     <div className="BookListingPage">
-      <BookListComponent
-        imgLink={""}
-        bookTitle={"An atlas of love"}
-        authorName={"Anuja Chauhan"}
-        cityName={"Navsari"}
-        postedByName={"Jill thakkar"}
-        price={" 79 | 195"}
-        postedOn={"1, Dec"}
-      />
+      {bookListData.length == 0 ? "loading" : bookListData.data.map((data) => {
+        return <BookListComponent
+        imgLink={data.photo}
+        bookTitle={data.name}
+        authorName={data.author}
+        cityName={data.city.city_name}
+        postedByName={data.user.name}
+        price={data.price}
+        postedOn={data.created_at}
+        bookId={data.id}
+      />;
+      })}
     </div>
   );
 }
 
-export default BookListingPage;
+function mapStateToProps(state) {
+  return {
+    bookListData: state.ListApiReducer.bookListData,
+  };
+}
+
+// function mapDispatchToProps(dispatch) {
+//   return {};
+// }
+
+export default connect(mapStateToProps, { FetchBooksList })(BookListingPage);
+
+// export default BookListingPage;

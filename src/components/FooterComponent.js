@@ -5,7 +5,7 @@ function FooterComponent() {
   return (
     <div className="main-div-style">
       <div className="row pb-5 upper-container-div-style">
-        <div class="col col-lg-4" style={{ textAlign: "left" }}>
+        <div className="col col-lg-4" style={{ textAlign: "left" }}>
           <div className="heading">
             <h3 className="pt-3 header-text-style">
               Old Books in popular cities
@@ -13,8 +13,8 @@ function FooterComponent() {
             <div className="main-line-style"></div>
           </div>
 
-          <div class="row" style={{ float: "left" }}>
-            <div class="row col-lg-6">
+          <div className="row" style={{ float: "left" }}>
+            <div className="row col-lg-6">
               <a href="#" className="mx-1 link-title-style">
                 Old Books in Delhi
               </a>
@@ -34,7 +34,7 @@ function FooterComponent() {
                 Old Books in Chandigarh
               </a>
             </div>
-            <div class="row col-lg-6">
+            <div className="row col-lg-6">
               <a href="#" className="mx-1 link-title-style">
                 Old Books in Mumbai
               </a>
@@ -57,12 +57,12 @@ function FooterComponent() {
           </div>
         </div>
 
-        <div class="col-lg-4" style={{ textAlign: "left" }}>
+        <div className="col-lg-4" style={{ textAlign: "left" }}>
           <div className="heading">
             <h3 className="pt-3 header-text-style">Quick Links</h3>
             <div className="main-line-style"></div>
           </div>
-          <div class="row" style={{ float: "left" }}>
+          <div className="row" style={{ float: "left" }}>
             <a href="#" className="mx-1 link-title-style">
               Old books(Used books)
             </a>
@@ -87,12 +87,12 @@ function FooterComponent() {
           </div>
         </div>
 
-        <div class="col col-lg-4" style={{ textAlign: "left" }}>
+        <div className="col col-lg-4" style={{ textAlign: "left" }}>
           <div className="heading">
             <h3 className="pt-3 header-text-style">Keep Connected</h3>
             <div className="main-line-style"></div>
           </div>
-          <div class="row" style={{ float: "left" }}>
+          <div className="row" style={{ float: "left" }}>
             <a href="#" className="mx-1 link-title-style">
               About us
             </a>
@@ -121,13 +121,13 @@ function FooterComponent() {
         >
           CodeCrunch Techlabs Pvt. Ltd.
         </a>
-        <a href="https://www.facebook.com/studentdesk.in" target="_blank" class="f-link"> 
+        <a href="https://www.facebook.com/studentdesk.in" target="_blank" className="f-link"> 
         <img src={require("../assets/social2.png").default} alt="" className="ImageStyle"/>
         </a>
-        <a href="https://plus.google.com/+StudentdeskIn_in" target="_blank" class="t-link">
+        <a href="https://plus.google.com/+StudentdeskIn_in" target="_blank" className="t-link">
         <img src={require("../assets/social3.png").default} alt="" className="ImageStyle"/>
         </a>
-        <a href="https://twitter.com/studentdesk_in" class="g-link" target="_blank">
+        <a href="https://twitter.com/studentdesk_in" className="g-link" target="_blank">
         <img src={require("../assets/social1.png").default} alt="" className="ImageStyle"/>
         </a>
 

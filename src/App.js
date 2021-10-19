@@ -22,7 +22,7 @@ function App() {
           <Route path="/booklistingpage">
             <BookListingPage />
           </Route>
-          <Route path="/booksdetailpage">
+          <Route path="/booksdetailpage/:bookId">
             <BookDetailPage />
           </Route>
         </Switch>
